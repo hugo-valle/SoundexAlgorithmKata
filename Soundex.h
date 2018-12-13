@@ -14,7 +14,9 @@ using namespace std;
 class Soundex
 {
 private:
-    string zeroPad(const string& word)const;
+    string zeroPad(const string& word) const;
+    string head(const string& word) const;
+    string encodeDigits(const string& word)const;
 public:
     string encode(const string& word) const;
 };
