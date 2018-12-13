@@ -24,5 +24,13 @@ TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits)
 
 TEST_F(SoundexEncoding, ReplaceConsonantsWithAppropriateDigits)
 {
-    ASSERT_THAT(soundex.encode("Ab"), Eq("A100"));
+    // Note: Require does not fail the test, assert does.
+    // Best practice states to only use EXPECT_ when
+    // developing the code, not in production.
+//     EXPECT_THAT(soundex.encode("Ap"), Eq("A100"));
+//    EXPECT_THAT(soundex.encode("Ax"), Eq("A200"));
+//    EXPECT_THAT(soundex.encode("Ar"), Eq("A600"));
+    ASSERT_THAT(soundex.encode("Ap"), Eq("A100"));
+    ASSERT_THAT(soundex.encode("Ax"), Eq("A200"));
+    ASSERT_THAT(soundex.encode("Ar"), Eq("A600"));
 }
