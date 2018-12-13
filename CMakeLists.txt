@@ -8,7 +8,7 @@ include_directories(googletest/include googlemock/include)
 set(CMAKE_CXX_STANDARD 11)          # C++ V11
 set(CMAKE_CXX_FLAGS "${CMAXE_CXX_FLAGS} -Wall")
 
-set(SRCS main.cpp SoundexTest.cpp)
+set(SRCS main.cpp SoundexTest.cpp Soundex.cpp Soundex.h)
 
 add_executable(test ${SRCS})
 target_link_libraries(test pthread gmock gmock_main gtest gtest_main)
