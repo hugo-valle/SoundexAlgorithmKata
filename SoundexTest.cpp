@@ -1,6 +1,6 @@
 #include <gmock/gmock.h>
 #include "Soundex.h"
-using ::testing::Eq;
+using namespace testing;
 // Create a class fixture
 class SoundexEncoding: public testing::Test
 {
@@ -42,7 +42,6 @@ TEST_F(SoundexEncoding, IgnoreNonAlphabetics)
     ASSERT_THAT(soundex.encode("A#"), Eq("A000"));
 }
 
-
 // DISABLED_ will not run the test.
 // use it when you need to Refactor your code
 // then, when you are ready, "enable" your test
@@ -69,4 +68,19 @@ TEST_F(SoundexEncoding, CombineDuplicateEncodings)
     ASSERT_THAT(soundex.encodeDigit('d'), Eq(soundex.encodeDigit('t')));
 
     ASSERT_THAT(soundex.encode("Abfxgdt"), Eq("A123"));
+}
+
+TEST_F(SoundexEncoding, UpperCaseFirstLetter)
+{
+    // Arrange @ class fixture
+    // Act & Assert
+    ASSERT_THAT(soundex.encode("abcd"), StartsWith("A"));
+}
+
+TEST_F(SoundexEncoding, IgnoreVowelsLikeLetters)
+{
+    // Arrange @ class fixture
+    // Act & Assert
+    ASSERT_THAT(soundex.encode("BaAeEiIoOuUhHyYwWcdl"), Eq("B234"));
+
 }

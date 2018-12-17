@@ -21,7 +21,7 @@ string Soundex::zeroPad(const string& word)const
  */
 string Soundex::encode(const string& word) const
 {
-    return zeroPad(head(word) + encodeDigits(tail(word)));
+    return zeroPad(upperFront(head(word)) + encodeDigits(tail(word)));
 }
 
 /**
@@ -111,5 +111,16 @@ string Soundex::lastDigit(const string &encoding) const {
         return "";
     }
     return std::string(1, encoding.back());
+}
+
+
+/**
+ * @brief Return uppercase of the Head of string
+ * @param word -- input string
+ * @return -- Uppercase head of word
+ */
+string Soundex::upperFront(const string &word) const {
+    return string(1,
+            toupper(static_cast<unsigned char>(word.front())));
 }
 
