@@ -81,6 +81,14 @@ TEST_F(SoundexEncoding, IgnoreVowelsLikeLetters)
 {
     // Arrange @ class fixture
     // Act & Assert
-    ASSERT_THAT(soundex.encode("BaAeEiIoOuUhHyYwWcdl"), Eq("B234"));
+    ASSERT_THAT(soundex.encode("BaAeEiIoOuUhHyYwWcdl"),
+            Eq("B234"));
+}
 
+TEST_F(SoundexEncoding, IgnoreCaseWhenEncodingConsonants)
+{
+    // Arrange @ class fixture
+    // Act & Assert
+    ASSERT_THAT(soundex.encode("BCDL"),
+            soundex.encode("Bcdl"));
 }
