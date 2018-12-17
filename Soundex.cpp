@@ -45,7 +45,12 @@ string Soundex::encodeDigits(const string &word) const
     {
         return "";
     }
-    return encodeDigit(word.front());
+    string encoding;
+    for(auto letter : word)
+    {
+        encoding += encodeDigit(letter);
+    }
+    return encoding;
 
 }
 

@@ -43,7 +43,10 @@ TEST_F(SoundexEncoding, IgnoreNonAlphabetics)
 }
 
 
-TEST_F(SoundexEncoding, DISABLED_ReplaceMultipleConsonantsWithDigits)
+// DISABLED_ will not run the test.
+// use it when you need to Refactor your code
+// then, when you are ready, "enable" your test
+TEST_F(SoundexEncoding, ReplaceMultipleConsonantsWithDigits)
 {
     // Arrange @ class fixture
     // Act & Assert
