@@ -52,3 +52,10 @@ TEST_F(SoundexEncoding, ReplaceMultipleConsonantsWithDigits)
     // Act & Assert
     ASSERT_THAT(soundex.encode("Acdl"), Eq("A234"));
 }
+
+TEST_F(SoundexEncoding, LimitLengthToFourCharacters)
+{
+    // Arrange @ class fixture
+    // Act & Assert
+    ASSERT_THAT(soundex.encode("Dcdlb").length(), Eq(4u));
+}
