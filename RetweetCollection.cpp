@@ -19,4 +19,10 @@ void RetweetCollection::add(const Tweet &tweet)
     size_ = 1;
 }
 
+RetweetCollection::RetweetCollection()
+{
+    size_ = 0;
+}
+
+
 
