@@ -34,3 +34,10 @@ TEST_F(SoundexEncoding, ReplaceConsonantsWithAppropriateDigits)
     ASSERT_THAT(soundex.encode("Ax"), Eq("A200"));
     ASSERT_THAT(soundex.encode("Ar"), Eq("A600"));
 }
+
+TEST_F(SoundexEncoding, IgnoreNonAlphabetics)
+{
+    // Arrange @ class fixture
+    // Act & Assert
+    ASSERT_THAT(soundex.encode("A#"), Eq("A000"));
+}
