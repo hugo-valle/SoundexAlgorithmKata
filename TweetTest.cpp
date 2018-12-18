@@ -53,3 +53,24 @@ TEST(ATweet, CanCopyConstructed)
     ASSERT_THAT(a, Eq(b));
 }
 
+TEST(ATweet, RequireUserToStartWithAtSign)
+{
+    string invalidUser("notStaringWith@");
+
+    // For any exception
+    //ASSERT_ANY_THROW(Tweet tweet("msg", invalidUser));
+
+    //If you know the exception
+    ASSERT_THROW(Tweet tweet("msg", invalidUser), InvalidUserException);
+}
+
+TEST(ATweet, RequireUserToStartWithAtSign2)
+{
+    string invalidUser("notStaringWith@");
+    try {
+
+        Tweet tweet("msg", invalidUser);
+        FAIL();
+    }
+    catch (const InvalidUserException& expected) {}
+}

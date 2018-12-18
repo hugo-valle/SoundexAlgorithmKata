@@ -81,3 +81,12 @@ TEST_F(ARetweetCollectionWithOneTweet, HasSizeOfOne)
 {
     ASSERT_THAT(collection.size(), Eq(1u));
 }
+
+// Example of Testing Doubles
+TEST(TestDouble, SumOfFloats)
+{
+    double x{4.0};
+    double y{0.56};
+
+    ASSERT_THAT(x + y, DoubleEq(4.56));
+}
