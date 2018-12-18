@@ -20,6 +20,10 @@ public:
 
     bool operator<(const Tweet &rhs)const;
 
+    bool operator==(const Tweet &rhs) const;
+
+    bool operator!=(const Tweet &rhs) const;
+
     const string &getUser_() const;
 };
 
