@@ -26,3 +26,30 @@ TEST(ATweet, IsNotEqualToAnotherWhenMessageAreUnEqual)
 
     ASSERT_THAT(a, Ne(b));
 }
+
+TEST(ATweet, IsLessThanWhenUserAndMessgeAre)
+{
+    Tweet a("msg", "@user1");
+    Tweet b("msg", "@user2");
+
+    // Lt: less than
+    ASSERT_THAT(a, Lt(b));
+}
+
+TEST(ATweet, IsLessThanWhenUserEqualAndMessgIsLessThan)
+{
+    Tweet a("msgA", "@user");
+    Tweet b("msgB", "@user");
+
+    // Lt: less than
+    ASSERT_THAT(a, Lt(b));
+}
+
+TEST(ATweet, CanCopyConstructed)
+{
+    Tweet a("msgA", "@user");
+    Tweet b(a);
+
+    ASSERT_THAT(a, Eq(b));
+}
+
