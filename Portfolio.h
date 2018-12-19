@@ -31,6 +31,8 @@ struct PurchaseRecord
 class Portfolio
 {
 public:
+    void Transact(const std::string& symbol, int shareCharge,
+            const boost::gregorian::date& transactionDate);
     static const boost::gregorian::date FIXED_PURCHASE_DATE;
     bool IsEmpty() const;
     void Purchase(const std::string& symbol, unsigned int shareCount,
