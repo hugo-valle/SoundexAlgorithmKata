@@ -14,24 +14,16 @@
 #include <unordered_map>
 #include <vector>
 #include <boost/date_time/gregorian/gregorian_types.hpp>
+#include "PurchaseRecord.h"
 
 class InvalidSellException: public std::exception { };
 
 class ShareCountCannotBeZeroException: public std::exception { };
 
-struct PurchaseRecord
-{
-    PurchaseRecord(unsigned int shareCount, const boost::gregorian::date& date)
-    : ShareCount(shareCount), Date(date){}
-
-    int ShareCount;
-    boost::gregorian::date Date;
-};
-
 class Portfolio
 {
 public:
-    void Transact(const std::string& symbol, int shareCharge,
+    void Transact(const std::string& symbol, int shareChange,
             const boost::gregorian::date& transactionDate);
     static const boost::gregorian::date FIXED_PURCHASE_DATE;
     bool IsEmpty() const;
@@ -42,9 +34,17 @@ public:
     unsigned int ShareCount(const std::string& symbol) const;
     std::vector<PurchaseRecord> Purchases(const std::string& symbol) const;
 
+    void UpdateShareCount(const std::string& symbol, int shareChange);
+    //void AddPurchaseRecord(int shareChange, const boost::gregorian::date& date);
+    void ThrowIfShareCountIsZero(int shareChange) const;
+
+    void AddPurchaseRecord(const std::string& symbol, int shareCount,
+            const boost::gregorian::date& date);
+
 private:
     std::unordered_map<std::string, unsigned int> holdings_;
     std::vector<PurchaseRecord> purchases_;
+    std::unordered_map<std::string, std::vector<PurchaseRecord>> purchaseRecords_;
 };
 
 #endif
