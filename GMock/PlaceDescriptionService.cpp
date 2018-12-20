@@ -24,6 +24,7 @@ std::string PlaceDescriptionService::summaryDescription(const std::string &respo
 
 std::string PlaceDescriptionService::get(const string& requestURL)const
 {
+    http_->initialize();
     return http_->get(requestURL);
 }
 

@@ -43,6 +43,21 @@ TEST_F(APlaceDescriptionService, ReturnDescriptionForValidLocation)
     service.summaryDescription(ValidLatitude, ValidLongitude);
 }
 
+TEST_F(APlaceDescriptionService, MakeHttpRequestToObtainAddress)
+{
+    HttpStub httpStub;  // test double
+    string urlStart(
+            "http://open.mapquestapi.com/nominatim/v1/reverse?format=json&" );
+    string expectedURL(urlStart +
+                       "lat=" + APlaceDescriptionService::ValidLatitude + "&" +
+                       "lon=" + APlaceDescriptionService::ValidLongitude);
+
+    EXPECT_CALL(httpStub, initialize());
+    EXPECT_CALL(httpStub, get(expectedURL));
+    PlaceDescriptionService service(&httpStub);
+
+    service.summaryDescription(ValidLatitude, ValidLongitude);
+}
 // Stub Class: Returns hard Coded value
 //class HttpStub: public Http
 //{
