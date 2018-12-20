@@ -13,8 +13,11 @@ private:
             const std::string& latitude, const std::string& longitude) const;
     std::string summaryDescription(const Address& address) const;
 
-    Http* http_;
+    std::string keyValue(const std::string& key, const std::string& value) const;
+    std::string get(const std::string& requestURL) const;
+    std::string summaryDescription(const std::string& response) const;
 
+    Http* http_;
 public:
     PlaceDescriptionService(Http* http);
     std::string summaryDescription(
